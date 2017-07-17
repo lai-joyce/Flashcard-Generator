@@ -18,4 +18,4 @@ var basicFlash = function(front,back) {
 	};
 }
 
-module.exports = BasicCard;
+module.exports = basicFlash;
