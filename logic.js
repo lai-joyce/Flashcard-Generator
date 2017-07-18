@@ -17,10 +17,10 @@ var onQuestion = 0;
 var rightAnswers = 0;
 var wrongAnswers = 0;
 
-// function startQuestion() {
+function startQuestion() {
 	inquirer.prompt([
 	{
-		name: "userInput"
+		name: "userInput",
 		message: "Would you like to add card or play game?",
 		type: "list",
 		choices: [{
@@ -36,7 +36,7 @@ var wrongAnswers = 0;
 			askQuestion();
 		}
 	});
-// }
+}
 
 function createCard() {
 	inquirer.prompt([
@@ -177,7 +177,7 @@ function askQuestion() {
 	})
 }
 
-askQuestion();
+// askQuestion();
 
-// startQuestion();
+startQuestion();
 
