@@ -1,0 +1,1 @@
+{"front":"Where is San Francisco located?","back":"California","form":"basic"};{"text":"San Francisco is located in California.","cloze":"Califor","clozeDeleted":"San Francisco is located in ...nia.","form":"cloze"};{"text":"Hello world.","cloze":"world","clozeDeleted":"Hello ....","form":"cloze"};
