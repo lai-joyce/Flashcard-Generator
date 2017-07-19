@@ -34,7 +34,7 @@ function startQuestion() {
 			createCard();
 		} else {
 			// askQuestion();
-			showCards();
+			askQuestion();
 		}
 	});
 }
@@ -125,103 +125,6 @@ function createCard() {
 		}
 	});
 }
-
-var showCards = function() {
-    // read the log.txt file
-    fs.readFile('log.txt', 'utf8', function(error, data) {
-        //if there is an error, log it
-        if (error) {
-            console.log('Error occurred: ' + error);
-        }
-        var dataArr = data.split(';');
-        console.log(dataArr);
-        var notBlank = function(value) {
-            return value;
-        };
-        questions = questions.filter(notBlank);
-        var count = 0;
-        showQuestion(questions, count);
-    })
-
-  };
-
-var showQuestion = function(array, index) {
-    question = array[index];
-    var parsedQuestion = JSON.parse(question);
-    var questionText;
-    var correctReponse;
-    if (parsedQuestion.type === 'basic') {
-        questionText = parsedQuestion.front;
-        correctReponse = parsedQuestion.back;
-    } else if (parsedQuestion.type === 'cloze') {
-        questionText = parsedQuestion.clozeDeleted;
-        correctReponse = parsedQuestion.cloze;
-    }
-    inquirer.prompt([{
-        name: 'response',
-        message: questionText
-    }]).then(function(answer) {
-        if (answer.response === correctReponse) {
-            console.log('Correct!');
-            if (index < array.length - 1) {
-              showQuestion(array, index + 1);
-            }
-        } else {
-            console.log('Wrong!');
-            if (index < array.length - 1) {
-              showQuestion(array, index + 1);
-            }
-        }
-    });
-};
-
-var showCards = function() {
-    // read the log.txt file
-    fs.readFile('./log.txt', 'utf8', function(error, data) {
-        //if there is an error, log it
-        if (error) {
-            console.log('Error occurred: ' + error);
-        }
-        var dataArr = data.split(';');
-        console.log(dataArr);
-        var notBlank = function(value) {
-            return value;
-        };
-        dataArr = dataArr.filter(notBlank);
-        var count = 0;
-        showQuestion(dataArr, count);
-    });
-};
-
-var showQuestion = function(array, index) {
-    question = array[index];
-    var parsedQuestion = JSON.parse(question);
-    var questionText;
-    var correctReponse;
-    if (parsedQuestion.type === 'basic') {
-        questionText = parsedQuestion.front;
-        correctReponse = parsedQuestion.back;
-    } else if (parsedQuestion.type === 'cloze') {
-        questionText = parsedQuestion.clozeDeleted;
-        correctReponse = parsedQuestion.cloze;
-    }
-    inquirer.prompt([{
-        name: 'response',
-        message: questionText
-    }]).then(function(answer) {
-        if (answer.response === correctReponse) {
-            console.log('Correct!');
-            if (index < array.length - 1) {
-              showQuestion(array, index + 1);
-            }
-        } else {
-            console.log('Wrong!');
-            if (index < array.length - 1) {
-              showQuestion(array, index + 1);
-            }
-        }
-    });
-};
 
 function askQuestion() {
 	inquirer.prompt([
